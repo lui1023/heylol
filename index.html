@@ -1,34 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Envelope + Letter (Open/Close on Click)</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive CSS Envelope + Letter</title>
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="envelope-wrapper">
-            <div class="envelope">
-                <div class="letter">
-                    <div class="text">
-                        <strong>Dear Person.</strong>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Numquam labore omnis minus maiores laboriosam, facere in beatae esse. 
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="heart"></div>
+    <h1 class="title-message">For My Special Someone 💌</h1>
+
+  <div class="container">
+    <img src="minion.png" class="minion" alt="Minion Peeking" />
+    <div class="envelope-wrapper">
+      <div class="envelope">
+        <div class="letter">
+          <div class="text">
+            <strong>Dear Karla,</strong>
+            <p>
+              I know we're not really like that but I do believe every girl deserves something special on this day, even if my pride is too big for me to deliver this in person, I do hope this is good enough for now. Truth is you're a really 
+              cool and genuine person that always manages to brighten up my day and for that I'm forever grateful. I really am glad we got the chance to meet and hope to continue being a reason for you to smile. Maybe someday you'll come out of your cave
+              and celebrate this with me but till then, Happy National Girlfriend Day! ‧₊˚❀༉‧₊˚˖°❀⋆.ೃ࿔*:･
+            </p>
+          </div>
         </div>
+      </div>
+      <div class="heart"></div>
+      
     </div>
-    <script>
-        const envelope = document.querySelector('.envelope-wrapper');
-        envelope.addEventListener('click', () => {
-            envelope.classList.toggle('flap');
-        });
-    </script>
+  </div>
+
+  <div class="flowers-container">
+    <img src="flowers.png" class="flowers" alt="Flowers" />
+  </div>
+ <div class="floating-hearts"></div>
+  <script>
+    const envelope = document.querySelector('.envelope-wrapper');
+    const flowers = document.querySelector('.flowers');
+
+    envelope.addEventListener('click', () => {
+      envelope.classList.toggle('flap');
+      flowers.classList.toggle('show');
+    });
+
+    // Heart float animation
+    const heartContainer = document.querySelector('.floating-hearts');
+    const heartEmojis = ['💖', '💘', '💝', '💗', '💞', '💓', '❤️'];
+
+    function spawnHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart-float');
+      heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+
+      heart.style.left = `${Math.random() * 100}%`;
+      heart.style.animationDuration = `${3 + Math.random() * 5}s`;
+      heart.style.fontSize = `${16 + Math.random() * 16}px`;
+      heart.style.opacity = Math.random() * 0.5 + 0.5;
+
+      heartContainer.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 8000);
+    }
+
+    setInterval(spawnHeart, 500);
+  </script>
+
 </body>
 </html>
