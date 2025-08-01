@@ -41,6 +41,9 @@
     envelope.addEventListener('click', () => {
       envelope.classList.toggle('flap');
       flowers.classList.toggle('show');
+
+      const title = document.querySelector('.title-message');
+      title.classList.toggle('hidden');
     });
 
     // Heart float animation

@@ -237,3 +237,6 @@ body{
   }
 }
 
+.title-message.hidden {
+  display: none;
+}
